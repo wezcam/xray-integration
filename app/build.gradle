@@ -21,24 +21,24 @@ dependencies {
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:31.0.1-jre'
     // Import the JUnit BOM to align versions
-    testImplementation platform('org.junit:junit-bom:5.10.0')
+    //testImplementation platform('org.junit:junit-bom:5.10.0')
 
     // Add the Jupiter API and engine
-    testImplementation 'org.junit.jupiter:junit-jupiter'
+    //testImplementation 'org.junit.jupiter:junit-jupiter'
 
     // Required if you are using Gradle 8.x or older to avoid deprecation warnings
-    testImplementation 'org.junit.platform:junit-platform-launcher'
+    //testImplementation 'org.junit.platform:junit-platform-launcher'
+
+    testImplementation 'app.getxray:xray-junit-extensions:0.10.0'
+    testImplementation 'org.testng:testng:7.10.2'
 }
 
-testing {
-    suites {
-        // Configure the built-in test suite
-        test {
-            // Use JUnit Jupiter test framework
-            useJUnitJupiter('5.8.2')
-        }
-    }
+test {
+    useTestNG() {
+        useDefaultListeners = true
+ }
 }
+
 
 application {
     // Define the main class for the application.

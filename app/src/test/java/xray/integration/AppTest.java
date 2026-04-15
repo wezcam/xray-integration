@@ -3,15 +3,21 @@
  */
 package xray.integration;
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.TestReporter;
+import org.testng.ITestResult;
+import org.testng.Reporter;
+import org.testng.annotations.CustomAttribute;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
 
 class AppTest {
-    @Test void appHasAGreeting(TestReporter testReporter) {
-        testReporter.publishEntry("test_key", "XSP-42");
-        App classUnderTest = new App();
+
+    @Test()
+    void appHasAGreeting() {
         System.out.println("!!!!!!TEST!!!!!");
-        assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
+        ITestResult result = Reporter.getCurrentTestResult();
+        result.setAttribute("requirement", "CALC-1234");   // Xray will try to create a link to this requirement issue
+        result.setAttribute("test", "CALC-2");             // Xray will try to find this Test issue and report result against it
+        result.setAttribute("labels", "core addition");
+        Reporter.setCurrentTestResult(result);
     }
 }

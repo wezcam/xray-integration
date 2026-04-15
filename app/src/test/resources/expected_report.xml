@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-04-16T10:18:27 NZST" name="Gradle suite" finished-at="2026-04-16T10:18:27 NZST" duration-ms="17">
+    <groups>
+    </groups>
+    <test started-at="2026-04-16T10:18:27 NZST" name="Gradle test" finished-at="2026-04-16T10:18:27 NZST" duration-ms="17">
+      <class name="xray.integration.AppTest">
+        <test-method signature="appHasAGreeting()[pri:0, instance:xray.integration.AppTest@770d3326, attributes: &lt;name: test, value:[XSP-42]&gt;]" started-at="2026-04-16T10:18:27 NZST" name="appHasAGreeting" finished-at="2026-04-16T10:18:27 NZST" duration-ms="4" status="PASS">
+          <reporter-output>
+          </reporter-output>
+          <attributes>
+            <attribute name="test">
+              <![CDATA[XSP-42]]>
+            </attribute> <!-- test -->
+          </attributes>
+        </test-method> <!-- appHasAGreeting -->
+      </class> <!-- xray.integration.AppTest -->
+    </test> <!-- Gradle test -->
+  </suite> <!-- Gradle suite -->
+</testng-results>

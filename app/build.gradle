@@ -39,6 +39,15 @@ test {
  }
 }
 
+task testngTest(type: JavaExec, dependsOn: [classes]) {
+    mainClass = 'org.testng.TestNG'
+    args('testng.xml',
+            '-reporter','org.testng.reporters.XMLReporter:generateTestResultAttributes=true,generateGroupsAttribute=true',
+            '-groups',System.getProperty('groups', 'all')
+    )
+    classpath = sourceSets.test.runtimeClasspath
+}
+
 
 application {
     // Define the main class for the application.

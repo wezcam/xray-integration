@@ -3,21 +3,29 @@
  */
 package xray.integration;
 
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.annotations.CustomAttribute;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 class AppTest {
 
-    @Test()
-    void appHasAGreeting() {
-        System.out.println("!!!!!!TEST!!!!!");
-        ITestResult result = Reporter.getCurrentTestResult();
-        result.setAttribute("requirement", "CALC-1234");   // Xray will try to create a link to this requirement issue
-        result.setAttribute("test", "CALC-2");             // Xray will try to find this Test issue and report result against it
-        result.setAttribute("labels", "core addition");
-        Reporter.setCurrentTestResult(result);
+    @DataProvider(name = "loginData")
+    public Object[][] getData() {
+        return new Object[][] {
+                {"user1", "pass1"},
+                {"user2", "pass2"}
+        };
+    }
+
+    @Test(dataProvider = "loginData", groups = "smoke")
+    void appHasAGreeting(String username, String password) {
+        System.out.println("!!!!!!TEST!!!!!" + username);
+        Reporter.getCurrentTestResult().setAttribute("test", "XSP-42");
+
+        Assert.assertEquals(username,"user1");
     }
 }

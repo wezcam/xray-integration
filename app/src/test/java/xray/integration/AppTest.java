@@ -13,19 +13,24 @@ import org.testng.annotations.Test;
 
 class AppTest {
 
+    //Arrange
     @DataProvider(name = "loginData")
     public Object[][] getData() {
         return new Object[][] {
-                {"user1", "pass1"},
-                {"user2", "pass2"}
+                {"60 Days"},
+                {"1 Year"}
         };
     }
 
     @Test(dataProvider = "loginData", groups = "smoke")
-    void appHasAGreeting(String username, String password) {
-        System.out.println("!!!!!!TEST!!!!!" + username);
+    void appHasAGreeting(String username) {
+        //Arrange
         Reporter.getCurrentTestResult().setAttribute("test", "XSP-42");
 
-        Assert.assertEquals(username,"user1");
+        //Act
+        //TODO
+
+        //Assert
+        Assert.assertEquals(username,"60 Days");
     }
 }
